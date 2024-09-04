@@ -1,6 +1,7 @@
 import re
 
 antal = int(33)
+
 sträng = "500kronorpåkontotmenmorsanhar5000"
 
 nummer = re.findall(r'\d+', sträng)
