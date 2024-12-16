@@ -1,6 +1,6 @@
 import tkinter as tk
 
-WIDTH = 800
+WIDTH = 500
 HEIGHT = 400
 BALL_SPEED_X = 3
 BALL_SPEED_Y = 3
@@ -38,6 +38,9 @@ def update_ball():
 
     if ball_coords[1] <= 0 or ball_coords[3] >= HEIGHT:
         ball_dy = -ball_dy
+        
+    if ball_coords[0] <= 0: 
+        ball_dx = -ball_dx
 
     paddle_coords = canvas.coords(paddle)
     if (ball_coords[2] >= paddle_coords[0] and
