@@ -29,6 +29,10 @@ def move_paddle(event):
     elif event.keysym == "Down" and paddle_coords[3] < HEIGHT:
         canvas.move(paddle, 0, PADDLE_SPEED)
 
+class Ball:
+    ball = canvas.create_oval(WIDTH//2-10, HEIGHT//2-10, WIDTH//2+10, HEIGHT//2+10, fill="white")
+
+
 
 def update_ball():
     global ball_dx, ball_dy, points
