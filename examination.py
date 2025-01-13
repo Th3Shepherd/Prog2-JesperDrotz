@@ -14,9 +14,7 @@ canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT, bg="black")
 canvas.pack()
 
 ball = canvas.create_oval(WIDTH//2-10, HEIGHT//2-10, WIDTH//2+10, HEIGHT//2+10, fill="white")
-
 paddle = canvas.create_rectangle(WIDTH-30, HEIGHT//2-50, WIDTH-20, HEIGHT//2+50, fill="white")
-
 point_text = canvas.create_text(10, 10, anchor="nw", text=f"Points: {points}", fill="white", font=("Arial", 16))
 
 ball_dx = BALL_SPEED_X
@@ -57,13 +55,30 @@ def update_ball():
 
     if ball_coords[2] >= WIDTH:
         canvas.create_text(WIDTH//2, HEIGHT//2, text="GAME OVER", fill="red", font=("Arial", 30))
+
         return
 
     canvas.after(20, update_ball)
+    
+def restart_game():
+    global points, ball_dx, ball_dy
+    
+    points = 0
+    ball_dx = BALL_SPEED_X
+    ball_dy = BALL_SPEED_Y
+
+    
+    canvas.coords(ball, WIDTH//2-10, HEIGHT//2-10, WIDTH//2+10, HEIGHT//2+10)
+    canvas.coords(paddle, WIDTH-30, HEIGHT//2-50, WIDTH-20, HEIGHT//2+50)
+    canvas.itemconfig(point_text, text=f"Points: {points}")
+    
+    restart_button.pack_forget()
+    update_ball()
 
 root.bind("<Up>", move_paddle)
 root.bind("<Down>", move_paddle)
 
+restart_button = tk.Button(root, text="Restart", command=restart_game)
 
 update_ball()
 root.mainloop()
