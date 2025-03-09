@@ -4,7 +4,7 @@ import random
 
 def start_server():         # Samma som i förra exemplet
     s = socket()
-    host = "localhost"
+    host = "192.168.1.182"
     port = 12345
     s.bind((host, port))
     s.listen()

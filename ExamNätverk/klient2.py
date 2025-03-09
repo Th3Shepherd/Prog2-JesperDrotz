@@ -3,7 +3,7 @@ from socket import *
 
 def connect_to_server():
     s = socket()
-    host = "192.168.1.182" 
+    host = "192.168.1.182"
     port = 12345
     s.connect((host, port))
     return s
