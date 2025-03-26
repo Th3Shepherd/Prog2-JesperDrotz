@@ -56,3 +56,5 @@ load_messages()
 root.mainloop()
 
 conn.close()
+#test
+print("HELLO WORLD")
